@@ -1,0 +1,23 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
+before_install:
+ - composer install --prefer-source --dev
+ - mkdir -p data/logs
+
+script:
+ - ./vendor/bin/phpunit --bootstrap=test/Bootstrap.php --coverage-clover ./build/logs/clover.xml
+ - ./vendor/bin/phpcs -n --standard=PSR2 ./src/ ./test/
+ 
+after_script:
+  - php ./vendor/bin/coveralls -v
+
+notifications:
+  email:
+    - chris.yawman@neustar.biz
+    - andy.majot@neustar.biz
+    - joel.gilliland@neustar.biz
