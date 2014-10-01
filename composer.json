@@ -1,0 +1,44 @@
+{
+    "name": "ughly/ugh-authentication",
+    "description": "A reusable and customizable ZF2 authentication module.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "module",
+        "zf2",
+        "authentication"
+    ],
+    "homepage": "https://github.com/ughly/ugh-authentication",
+    "authors": [
+        {
+            "name": "Chris Yawman",
+            "email": "christopher.yawman@neustar.biz"
+        },
+        {
+            "name": "Joel Gilliland",
+            "email": "joel.gilliland@neustar.biz"
+        },
+        {
+            "name": "Andy Majot",
+            "email": "andy.majot@neustar.biz"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.3.*"
+    },
+    "require-dev": {
+        "phpmd/phpmd" : "1.4.*",
+        "phpunit/phpunit" : ">=3.7,<4",
+        "satooshi/php-coveralls": "~0.6",
+        "squizlabs/php_codesniffer" : "1.4.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "UghAuthentication": "src/"
+        },
+        "classmap": [
+            "Module.php"
+        ]
+    }
+}
