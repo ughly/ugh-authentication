@@ -10,7 +10,7 @@ before_install:
  - mkdir -p data/logs
 
 script:
- - ./vendor/bin/phpunit --bootstrap=test/Bootstrap.php --coverage-clover ./build/logs/clover.xml
+ - ./vendor/bin/codecept run unit --coverage
  - ./vendor/bin/phpcs -n --standard=PSR2 ./src/ ./test/
  
 after_script:
