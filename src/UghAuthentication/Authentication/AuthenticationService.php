@@ -4,6 +4,7 @@ namespace UghAuthentication\Authentication;
 
 use Zend\Authentication\Adapter\AdapterInterface;
 use Zend\Authentication\AuthenticationServiceInterface;
+use Zend\Authentication\Result;
 use Zend\Authentication\Storage\StorageInterface;
 
 class AuthenticationService implements AuthenticationServiceInterface
@@ -15,12 +16,21 @@ class AuthenticationService implements AuthenticationServiceInterface
     /** @var StorageInterface */
     private $storage;
 
+    /**
+     * 
+     * @param StorageInterface $storage
+     * @param AdapterInterface $adapter
+     */
     public function __construct(StorageInterface $storage, AdapterInterface $adapter)
     {
         $this->adapter = $adapter;
         $this->storage = $storage;
     }
 
+    /**
+     * 
+     * @return Result
+     */
     public function authenticate()
     {
         $result = $this->adapter->authenticate();
@@ -46,6 +56,10 @@ class AuthenticationService implements AuthenticationServiceInterface
         return $this->storage->read();
     }
 
+    /**
+     * 
+     * @return boolean
+     */
     public function hasIdentity()
     {
         return !$this->storage->isEmpty();
