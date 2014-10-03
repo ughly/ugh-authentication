@@ -11,6 +11,10 @@ abstract class Adapter implements AdapterInterface
     /** @var AdapterInterface */
     private $successor;
 
+    /**
+     * 
+     * @return Result
+     */
     public function authenticate()
     {
         $result = $this->doAuthentication();
@@ -22,6 +26,10 @@ abstract class Adapter implements AdapterInterface
         return $result;
     }
 
+    /**
+     * 
+     * @param AdapterInterface $successor
+     */
     public function setSuccessor(AdapterInterface $successor)
     {
         $this->successor = $successor;
