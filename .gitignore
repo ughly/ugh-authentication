@@ -1,0 +1,8 @@
+nbproject
+build/logs
+vendor
+composer.lock
+.idea
+composer.phar
+
+tests/_output/*

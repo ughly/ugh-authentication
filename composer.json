@@ -29,7 +29,7 @@
     },
     "require-dev": {
         "phpmd/phpmd" : "1.4.*",
-        "phpunit/phpunit" : ">=3.7,<4",
+        "codeception/codeception": "*",
         "satooshi/php-coveralls": "~0.6",
         "squizlabs/php_codesniffer" : "1.4.*"
     },
