@@ -8,10 +8,11 @@ php:
 before_install:
  - composer install --prefer-source --dev
  - mkdir -p data/logs
+ - mkdir -p tests/_output
 
 script:
  - ./vendor/bin/codecept run unit --coverage
- - ./vendor/bin/phpcs -n --standard=PSR2 ./src/ ./test/
+ - ./vendor/bin/phpcs -n --standard=PSR2 ./src/ ./tests/
  
 after_script:
   - php ./vendor/bin/coveralls -v
