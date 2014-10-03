@@ -21,7 +21,9 @@ class AdapterTest extends PHPUnit_Framework_TestCase
 
         $invalidAdapterMock->setSuccessor($validAdapterMock);
 
-        $invalidAdapterMock->authenticate();
+        $result = $invalidAdapterMock->authenticate();
+
+        $this->assertSame($validResult, $result);
     }
 
     public function testAdapterSuccessorDoesntGetCalledOnValidResult()
