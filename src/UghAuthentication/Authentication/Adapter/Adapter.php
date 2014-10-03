@@ -19,7 +19,7 @@ abstract class Adapter implements AdapterInterface
     {
         $result = $this->doAuthentication();
 
-        if (!$result->isValid()) {
+        if (!$result->isValid() && !is_null($this->successor)) {
             return $this->successor->authenticate();
         }
 
