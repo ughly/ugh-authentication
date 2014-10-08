@@ -31,6 +31,10 @@ class Login extends AbstractActionController
      */
     public function indexAction()
     {
+        if (!is_null($this->identity())) {
+            return $this->redirect()->toRoute($this->loginRedirectRoute);
+        }
+
         if ($this->getRequest()->isPost()) {
             if ($this->loginForm->isValid()) {
                 return $this->redirect()->toRoute($this->loginRedirectRoute);
