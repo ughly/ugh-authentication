@@ -3,16 +3,16 @@
 namespace UghAuthenticationTest\Controller;
 
 use ReflectionProperty;
-use UghAuthentication\Controller\Login;
+use UghAuthentication\Controller\LoginController;
 
-class LoginTest extends AbstractControllerTestCaseTest
+class LoginControllerTest extends AbstractControllerTestCaseTest
 {
 
     public function testGetLogin()
     {
         $loginFormMock = $this->getMock('Zend\Form\FormInterface');
 
-        $controller = new Login($loginFormMock);
+        $controller = new LoginController($loginFormMock);
 
         $pluginManagerMock = $this->getMock('Zend\Mvc\Controller\PluginManager', array('get'));
         $pluginManagerMock->expects($this->any())->method('get')->will($this->returnCallback(array($this, 'getPluginMockCallback')));
@@ -36,7 +36,7 @@ class LoginTest extends AbstractControllerTestCaseTest
 
         $loginFormMock = $this->getMock('Zend\Form\FormInterface');
 
-        $controller = new Login($loginFormMock);
+        $controller = new LoginController($loginFormMock);
         $controller->setLoginRedirectRoute('my-crazy-login-redirect-route');
 
         $pluginManagerMock = $this->getMock('Zend\Mvc\Controller\PluginManager', array('get'));
@@ -62,7 +62,7 @@ class LoginTest extends AbstractControllerTestCaseTest
         $requestMock = $this->getMock('Zend\Http\Request');
         $requestMock->expects($this->once())->method('isPost')->will($this->returnValue(true));
 
-        $controller = new Login($loginFormMock);
+        $controller = new LoginController($loginFormMock);
 
         $pluginManagerMock = $this->getMock('Zend\Mvc\Controller\PluginManager', array('get'));
         $pluginManagerMock->expects($this->any())->method('get')->will($this->returnCallback(array($this, 'getPluginMockCallback')));
@@ -79,7 +79,7 @@ class LoginTest extends AbstractControllerTestCaseTest
         $loginFormMock = $this->getMock('Zend\Form\FormInterface');
         $loginFormMock->expects($this->once())->method('isValid')->will($this->returnValue(true));
 
-        $controller = new Login($loginFormMock);
+        $controller = new LoginController($loginFormMock);
         $controller->setLoginRedirectRoute('my-crazy-login-redirect-route');
 
         $pluginManagerMock = $this->getMock('Zend\Mvc\Controller\PluginManager', array('get'));

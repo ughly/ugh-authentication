@@ -2,7 +2,7 @@
 
 namespace UghAuthenticationTest\Controller;
 
-use UghAuthentication\Controller\Logout;
+use UghAuthentication\Controller\LogoutController;
 
 class LogoutTest extends AbstractControllerTestCaseTest
 {
@@ -11,7 +11,7 @@ class LogoutTest extends AbstractControllerTestCaseTest
     {
         $authenticationServiceMock = $this->getMock('Zend\Authentication\AuthenticationServiceInterface');
 
-        $controller = new Logout($authenticationServiceMock);
+        $controller = new LogoutController($authenticationServiceMock);
         $controller->setLoginRoute('my-crazy-login-route');
 
         $pluginManagerMock = $this->getMock('Zend\Mvc\Controller\PluginManager', array('get'));
@@ -31,7 +31,7 @@ class LogoutTest extends AbstractControllerTestCaseTest
         $authenticationServiceMock = $this->getMock('Zend\Authentication\AuthenticationServiceInterface');
         $authenticationServiceMock->expects($this->once())->method('clearIdentity');
 
-        $controller = new Logout($authenticationServiceMock);
+        $controller = new LogoutController($authenticationServiceMock);
 
         $pluginManagerMock = $this->getMock('Zend\Mvc\Controller\PluginManager', array('get'));
         $pluginManagerMock->expects($this->any())->method('get')->will($this->returnCallback(array($this, 'getPluginMockCallback')));

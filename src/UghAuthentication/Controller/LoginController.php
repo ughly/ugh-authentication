@@ -7,7 +7,7 @@ use Zend\Http\Response;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class Login extends AbstractActionController
+class LoginController extends AbstractActionController
 {
 
     /** @var FormInterface */

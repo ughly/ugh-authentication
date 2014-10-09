@@ -6,7 +6,7 @@ use Zend\Authentication\AuthenticationServiceInterface;
 use Zend\Http\Response;
 use Zend\Mvc\Controller\AbstractActionController;
 
-class Logout extends AbstractActionController
+class LogoutController extends AbstractActionController
 {
 
     /** @var AuthenticationServiceInterface */
