@@ -1,7 +1,7 @@
 <?php
+
 namespace UghAuthenticationTest\Factory\InputFilter;
 
-use PHPUnit_Framework_TestCase;
 use UghAuthentication\Factory\InputFilter\LoginFactory;
 use Zend\Authentication\AuthenticationService;
 use Zend\ServiceManager\ServiceManager;
@@ -27,5 +27,4 @@ class LoginFactoryTest extends \PHPUnit_Framework_TestCase
         $inputFilter = $inputFilterFactory->createService($serviceManager);
         $this->assertInstanceOf('Zend\InputFilter\InputFilter', $inputFilter);
     }
-
 }

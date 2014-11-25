@@ -42,17 +42,18 @@ class LoginFactory implements FactoryInterface
                 ->attach(new StripTags());
         $password->getValidatorChain()
                 ->attach(
-                        new Authentication(
-                        array(
-                    'adapter' => $serviceLocator->get(
-                            'UghAuthentication\Authentication\Adapter'
-                    ),
-                    'identity' => 'username',
-                    'credential' => 'password',
-                    'service' => $serviceLocator->get(
-                            'UghAuthentication\Authentication\AuthenticationService'
-                    ))
+                new Authentication(
+                    array(
+                        'adapter' => $serviceLocator->get(
+                                'UghAuthentication\Authentication\Adapter'
+                        ),
+                        'identity' => 'username',
+                        'credential' => 'password',
+                        'service' => $serviceLocator->get(
+                                'UghAuthentication\Authentication\AuthenticationService'
                         )
+                )
+                )
         );
 
         $inputFilter = new InputFilter();
