@@ -34,7 +34,8 @@ return array(
     'service_manager' => array(
         'factories' => array(
             'UghAuthentication\Authentication\AuthenticationService' => 'UghAuthentication\Factory\Authentication\AuthenticationService',
-            'UghAuthentication\Form\Login' => 'UghAuthentication\Form\LoginFactory'
+            'UghAuthentication\Form\Login' => 'UghAuthentication\Form\LoginFactory',
+            'UghAuthentication\InputFilter\Login' => 'UghAuthentication\Factory\InputFilter\LoginFactory'
         )
     ),
     'view_manager' => array(

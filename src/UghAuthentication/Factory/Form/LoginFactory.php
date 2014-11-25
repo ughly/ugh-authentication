@@ -14,6 +14,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class LoginFactory implements FactoryInterface
 {
+
     /**
      * @param ServiceLocatorInterface $serviceLocator
      *
@@ -21,12 +22,10 @@ class LoginFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+        $inputFilter = $serviceLocator->getServiceLocator()->get('UghAuthentication\InputFilter\Login');
+
         $form = new LoginForm();
-        $form->setInputFilter(
-            $serviceLocator->getServiceLocator()->get(
-                'UghAuthentication\Factory\InputFilter\LoginFactory'
-            )
-        );
+        $form->setInputFilter($inputFilter);
         $form->setValidationGroup(FormInterface::VALIDATE_ALL);
 
         return $form;

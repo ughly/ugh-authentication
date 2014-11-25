@@ -15,7 +15,7 @@ class LoginFactoryTest extends \PHPUnit_Framework_TestCase
 
 
         $serviceManager = new ServiceManager();
-        $serviceManager->setService('UghAuthentication\Factory\InputFilter\LoginFactory', new InputFilter());
+        $serviceManager->setService('UghAuthentication\InputFilter\Login', new InputFilter());
 
         $formServiceManager = new FormElementManager();
         $formServiceManager->setServiceLocator($serviceManager);
