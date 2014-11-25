@@ -27,8 +27,8 @@ return array(
     ),
     'controllers' => array(
         'factories' => array(
-            'UghAuthentication\Controller\Login' => 'UghAuthentication\Factory\Controller\LoginController',
-            'UghAuthentication\Controller\Logout' => 'UghAuthentication\Factory\Controller\LogoutController'
+            'UghAuthentication\Controller\Login' => 'UghAuthentication\Factory\Controller\LoginControllerFactory',
+            'UghAuthentication\Controller\Logout' => 'UghAuthentication\Factory\Controller\LogoutControllerFactory'
         )
     ),
     'service_manager' => array(
