@@ -39,6 +39,9 @@ return array(
         )
     ),
     'view_manager' => array(
+        'template_map' => array(
+            'ugh-authentication/login/index' => __DIR__ . '/../view/ugh-authentication/login/index.phtml'
+        ),
         'template_path_stack' => array(
             'ugh-authentication' => __DIR__ . '/../view'
         )
