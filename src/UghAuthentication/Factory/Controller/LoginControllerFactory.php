@@ -11,8 +11,8 @@ class LoginControllerFactory implements FactoryInterface
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $serviceManager = $serviceLocator->getServiceLocator();
-        $loginForm = $serviceManager->get('UghAuthentication\Form\Login');
+        $formElementManager = $serviceLocator->getServiceLocator()->get('FormElementManager');
+        $loginForm = $formElementManager->get('UghAuthentication\Form\Login');
 
         $controller = new LoginController($loginForm);
 

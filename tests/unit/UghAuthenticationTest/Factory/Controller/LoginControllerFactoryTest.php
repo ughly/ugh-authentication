@@ -16,8 +16,11 @@ class LoginControllerFactoryTest extends PHPUnit_Framework_TestCase
 
         $loginFormMock = $this->getMock('Zend\Form\FormInterface');
 
+        $formElementManager = new \Zend\Form\FormElementManager();
+        $formElementManager->setService('UghAuthentication\Form\Login', $loginFormMock);
+
         $serviceManager = new ServiceManager();
-        $serviceManager->setService('UghAuthentication\Form\Login', $loginFormMock);
+        $serviceManager->setService('FormElementManager', $formElementManager);
 
         $controllerServiceManager = new ControllerManager();
         $controllerServiceManager->setServiceLocator($serviceManager);
