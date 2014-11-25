@@ -55,5 +55,4 @@ class Login extends Form
             ),
         ));
     }
-
 }

@@ -17,6 +17,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class LoginFactory implements FactoryInterface
 {
+
     /**
      * @param ServiceLocatorInterface $serviceLocator
      *
@@ -29,30 +30,30 @@ class LoginFactory implements FactoryInterface
         $username->setRequired(true);
         $username->setAllowEmpty(false);
         $username->getFilterChain()
-            ->attach(new StringTrim())
-            ->attach(new StripTags());
+                ->attach(new StringTrim())
+                ->attach(new StripTags());
 
         $password = new Input();
         $password->setName('password');
         $password->setRequired(true);
         $password->setAllowEmpty(false);
         $password->getFilterChain()
-            ->attach(new StringTrim())
-            ->attach(new StripTags());
+                ->attach(new StringTrim())
+                ->attach(new StripTags());
         $password->getValidatorChain()
-            ->attach(
-                new Authentication(
-                    array(
-                        'adapter'    => $serviceLocator->get(
+                ->attach(
+                        new Authentication(
+                        array(
+                    'adapter' => $serviceLocator->get(
                             'UghAuthentication\Authentication\Adapter'
-                        ),
-                        'identity'   => 'username',
-                        'credential' => 'password',
-                        'service'    => $serviceLocator->get(
+                    ),
+                    'identity' => 'username',
+                    'credential' => 'password',
+                    'service' => $serviceLocator->get(
                             'UghAuthentication\Authentication\AuthenticationService'
-                        ))
-                )
-            );
+                    ))
+                        )
+        );
 
         $inputFilter = new InputFilter();
         $inputFilter->add($username);
@@ -60,5 +61,4 @@ class LoginFactory implements FactoryInterface
 
         return $inputFilter;
     }
-
 }

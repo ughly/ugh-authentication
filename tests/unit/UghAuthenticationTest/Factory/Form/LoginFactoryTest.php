@@ -1,4 +1,5 @@
 <?php
+
 namespace UghAuthenticationTest\Factory\Form;
 
 use UghAuthentication\Factory\Form\LoginFactory;
@@ -23,5 +24,4 @@ class LoginFactoryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('UghAuthentication\Form\Login', $inputFilter);
     }
-
 }
