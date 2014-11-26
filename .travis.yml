@@ -8,10 +8,9 @@ php:
 before_install:
  - composer install --prefer-source --dev
  - mkdir -p data/logs
- - mkdir -p tests/_output
 
 script:
- - ./vendor/bin/codecept run unit --coverage
+ - ./vendor/bin/phpunit --bootstrap=test/Bootstrap.php --coverage-clover ./build/logs/clover.xml
  - ./vendor/bin/phpcs -n --standard=PSR2 ./src/ ./tests/
  
 after_script:
