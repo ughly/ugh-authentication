@@ -4,16 +4,9 @@ namespace UghAuthentication\Form;
 
 use Zend\Form\Form;
 
-/**
- * Class Login
- * @package UghAuthentication\Form\Login
- */
 class Login extends Form
 {
 
-    /**
-     *
-     */
     public function init()
     {
         $this->add(array(

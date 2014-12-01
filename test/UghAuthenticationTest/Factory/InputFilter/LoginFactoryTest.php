@@ -2,11 +2,13 @@
 
 namespace UghAuthenticationTest\Factory\InputFilter;
 
+use PHPUnit_Framework_TestCase;
 use UghAuthentication\Factory\InputFilter\LoginFactory;
 use Zend\Authentication\AuthenticationService;
+use Zend\Authentication\Validator\Authentication;
 use Zend\ServiceManager\ServiceManager;
 
-class LoginFactoryTest extends \PHPUnit_Framework_TestCase
+class LoginFactoryTest extends PHPUnit_Framework_TestCase
 {
 
     public function testInputFilterFactory()
@@ -22,6 +24,7 @@ class LoginFactoryTest extends \PHPUnit_Framework_TestCase
         $serviceManager = new ServiceManager();
         $serviceManager->setService('UghAuthentication\Authentication\Adapter', $authenticationAdapterMock);
         $serviceManager->setService('UghAuthentication\Authentication\AuthenticationService', $authenticationService);
+        $serviceManager->setService('UghAuthentication\Validator\Authentication', new Authentication());
 
         $inputFilterFactory = new LoginFactory();
         $inputFilter = $inputFilterFactory->createService($serviceManager);

@@ -2,7 +2,7 @@
 
 namespace UghAuthentication\Factory\InputFilter;
 
-use Zend\Authentication\Validator\Authentication;
+use UghAuthentication\Validator\Authentication;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
 use Zend\InputFilter\Input;
@@ -41,20 +41,7 @@ class LoginFactory implements FactoryInterface
                 ->attach(new StringTrim())
                 ->attach(new StripTags());
         $password->getValidatorChain()
-                ->attach(
-                    new Authentication(
-                        array(
-                            'adapter' => $serviceLocator->get(
-                                'UghAuthentication\Authentication\Adapter'
-                            ),
-                            'identity' => 'username',
-                            'credential' => 'password',
-                            'service' => $serviceLocator->get(
-                                'UghAuthentication\Authentication\AuthenticationService'
-                            ),
-                        )
-                    )
-                );
+                ->attach($serviceLocator->get('UghAuthentication\Validator\Authentication'));
 
         $inputFilter = new InputFilter();
         $inputFilter->add($username);

@@ -2,12 +2,23 @@
 
 namespace UghAuthenticationTest\Authentication\Form;
 
-class LoginTest extends \PHPUnit_Framework_TestCase
+use PHPUnit_Framework_TestCase;
+use UghAuthentication\Form\Login;
+
+class LoginTest extends PHPUnit_Framework_TestCase
 {
 
-    // tests
-    public function testMe()
+    public function testConstruct()
     {
+        $loginForm = new Login();
 
+        $loginForm->init();
+
+        $elements = $loginForm->getElements();
+
+        $this->assertArrayHasKey('username', $elements);
+        $this->assertArrayHasKey('password', $elements);
+        $this->assertArrayHasKey('security', $elements);
+        $this->assertArrayHasKey('submit', $elements);
     }
 }
