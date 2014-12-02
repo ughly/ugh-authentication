@@ -2,13 +2,18 @@
 
 namespace UghAuthentication\Authentication;
 
+use UghAuthentication\Authentication\Event\AuthenticationEvent;
 use Zend\Authentication\Adapter\AdapterInterface;
 use Zend\Authentication\AuthenticationServiceInterface;
 use Zend\Authentication\Result;
 use Zend\Authentication\Storage\StorageInterface;
+use Zend\EventManager\EventInterface;
+use Zend\EventManager\EventManagerAwareInterface;
 
-class AuthenticationService implements AuthenticationServiceInterface
+class AuthenticationService implements AuthenticationServiceInterface, EventManagerAwareInterface
 {
+
+    use \Zend\EventManager\EventManagerAwareTrait;
 
     /** @var AdapterInterface */
     private $adapter;
@@ -41,6 +46,9 @@ class AuthenticationService implements AuthenticationServiceInterface
 
         if ($result->isValid()) {
             $this->storage->write($result->getIdentity());
+            $this->triggerAuthenticationSuccessEvent($result);
+        } else {
+            $this->triggerAuthenticationFailureEvent($result);
         }
 
         return $result;
@@ -63,5 +71,22 @@ class AuthenticationService implements AuthenticationServiceInterface
     public function hasIdentity()
     {
         return !$this->storage->isEmpty();
+    }
+
+    private function triggerAuthenticationSuccessEvent(Result $result)
+    {
+        $event = new AuthenticationEvent(AuthenticationEvent::AUTHENTICATION_SUCCESS_EVENT, $result);
+        $this->triggerAuthenticationEvent($event);
+    }
+
+    private function triggerAuthenticationFailureEvent(Result $result)
+    {
+        $event = new AuthenticationEvent(AuthenticationEvent::AUTHENTICATION_FAILURE_EVENT, $result);
+        $this->triggerAuthenticationEvent($event);
+    }
+
+    private function triggerAuthenticationEvent(EventInterface $event)
+    {
+        $this->getEventManager()->trigger($event);
     }
 }

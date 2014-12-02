@@ -4,6 +4,8 @@ namespace UghAuthenticationTest\Authentication;
 
 use PHPUnit_Framework_TestCase;
 use UghAuthentication\Authentication\AuthenticationService;
+use UghAuthentication\Authentication\Event\AuthenticationEvent;
+use Zend\EventManager\EventManager;
 
 class AuthenticationServiceTest extends PHPUnit_Framework_TestCase
 {
@@ -24,10 +26,21 @@ class AuthenticationServiceTest extends PHPUnit_Framework_TestCase
         $storageMock->expects($this->once())->method('write');
         $storageMock->expects($this->once())->method('read')->will($this->returnValue($identity));
 
+        $authSuccessfulEventTriggered = false;
+
+        $eventManager = new EventManager();
+        $eventManager->attach(AuthenticationEvent::AUTHENTICATION_SUCCESS_EVENT, function() use(&$authSuccessfulEventTriggered) {
+            $authSuccessfulEventTriggered = true;
+        });
+
         $authenticationService = new AuthenticationService($storageMock, $authenticationAdapterMock);
+        $authenticationService->setEventManager($eventManager);
+
         $authenticationService->authenticate();
 
         $this->assertSame($identity, $authenticationService->getIdentity());
+
+        $this->assertTrue($authSuccessfulEventTriggered);
     }
 
     public function testInvalidAuthentication()
@@ -45,8 +58,19 @@ class AuthenticationServiceTest extends PHPUnit_Framework_TestCase
         $storageMock->expects($this->never())->method('write');
         $storageMock->expects($this->never())->method('read');
 
+        $authFailEventTriggered = false;
+
+        $eventManager = new EventManager();
+        $eventManager->attach(AuthenticationEvent::AUTHENTICATION_FAILURE_EVENT, function() use(&$authFailEventTriggered) {
+            $authFailEventTriggered = true;
+        });
+
         $authenticationService = new AuthenticationService($storageMock, $authenticationAdapterMock);
+        $authenticationService->setEventManager($eventManager);
+
         $authenticationService->authenticate();
+
+        $this->assertTrue($authFailEventTriggered);
     }
 
     public function testAuthenticationClearsExistingIdentity()
