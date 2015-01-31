@@ -29,7 +29,7 @@ class AuthenticationServiceTest extends PHPUnit_Framework_TestCase
         $authSuccessfulEventTriggered = false;
 
         $eventManager = new EventManager();
-        $eventManager->attach(AuthenticationEvent::AUTHENTICATION_SUCCESS_EVENT, function() use(&$authSuccessfulEventTriggered) {
+        $eventManager->attach(AuthenticationEvent::AUTHENTICATION_SUCCESS_EVENT, function () use (&$authSuccessfulEventTriggered) {
             $authSuccessfulEventTriggered = true;
         });
 
@@ -61,7 +61,7 @@ class AuthenticationServiceTest extends PHPUnit_Framework_TestCase
         $authFailEventTriggered = false;
 
         $eventManager = new EventManager();
-        $eventManager->attach(AuthenticationEvent::AUTHENTICATION_FAILURE_EVENT, function() use(&$authFailEventTriggered) {
+        $eventManager->attach(AuthenticationEvent::AUTHENTICATION_FAILURE_EVENT, function () use (&$authFailEventTriggered) {
             $authFailEventTriggered = true;
         });
 
