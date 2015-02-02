@@ -3,8 +3,7 @@
 namespace UghAuthentication\Authentication;
 
 use UghAuthentication\Authentication\Event\AuthenticationEvent;
-use Zend\Authentication\Adapter\AdapterInterface;
-use Zend\Authentication\AuthenticationServiceInterface;
+use Zend\Authentication\Adapter\ValidatableAdapterInterface;
 use Zend\Authentication\Result;
 use Zend\Authentication\Storage\StorageInterface;
 use Zend\EventManager\EventInterface;
@@ -15,18 +14,24 @@ class AuthenticationService implements AuthenticationServiceInterface, EventMana
 
     use \Zend\EventManager\EventManagerAwareTrait;
 
-    /** @var AdapterInterface */
+    /** @var ValidatableAdapterInterface */
     private $adapter;
 
     /** @var StorageInterface */
     private $storage;
 
+    /** @var string */
+    private $identity;
+
+    /** @var string */
+    private $credential;
+
     /**
      * 
      * @param StorageInterface $storage
-     * @param AdapterInterface $adapter
+     * @param ValidatableAdapterInterface $adapter
      */
-    public function __construct(StorageInterface $storage, AdapterInterface $adapter)
+    public function __construct(StorageInterface $storage, ValidatableAdapterInterface $adapter)
     {
         $this->adapter = $adapter;
         $this->storage = $storage;
@@ -38,6 +43,9 @@ class AuthenticationService implements AuthenticationServiceInterface, EventMana
      */
     public function authenticate()
     {
+        $this->adapter->setIdentity($this->identity);
+        $this->adapter->setCredential($this->credential);
+
         $result = $this->adapter->authenticate();
 
         if ($this->hasIdentity()) {
@@ -59,6 +67,11 @@ class AuthenticationService implements AuthenticationServiceInterface, EventMana
         $this->storage->clear();
     }
 
+    public function setIdentity($identity)
+    {
+        $this->identity = $identity;
+    }
+
     public function getIdentity()
     {
         return $this->storage->read();
@@ -71,6 +84,16 @@ class AuthenticationService implements AuthenticationServiceInterface, EventMana
     public function hasIdentity()
     {
         return !$this->storage->isEmpty();
+    }
+
+    public function getCredential()
+    {
+        return $this->credential;
+    }
+
+    public function setCredential($credential)
+    {
+        $this->credential = $credential;
     }
 
     private function triggerAuthenticationSuccessEvent(Result $result)

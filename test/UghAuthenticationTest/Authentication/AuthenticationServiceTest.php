@@ -18,7 +18,7 @@ class AuthenticationServiceTest extends PHPUnit_Framework_TestCase
         $authenticationResultMock->expects($this->once())->method('getIdentity')->will($this->returnValue($identity));
         $authenticationResultMock->expects($this->once())->method('isValid')->will($this->returnValue(true));
 
-        $authenticationAdapterMock = $this->getMockBuilder('Zend\Authentication\Adapter\AdapterInterface', array('authenticate'))->disableOriginalConstructor()->getMock();
+        $authenticationAdapterMock = $this->getMockBuilder('Zend\Authentication\Adapter\ValidatableAdapterInterface', array('authenticate'))->disableOriginalConstructor()->getMock();
         $authenticationAdapterMock->expects($this->once())->method('authenticate')->will($this->returnValue($authenticationResultMock));
 
         $storageMock = $this->getMockBuilder('Zend\Authentication\Storage\StorageInterface', array('isEmpty', 'read', 'write', 'clear'))->disableOriginalConstructor()->getMock();
@@ -50,7 +50,7 @@ class AuthenticationServiceTest extends PHPUnit_Framework_TestCase
         $authenticationResultMock->expects($this->never())->method('getIdentity');
         $authenticationResultMock->expects($this->once())->method('isValid')->will($this->returnValue(false));
 
-        $authenticationAdapterMock = $this->getMockBuilder('Zend\Authentication\Adapter\AdapterInterface', array('authenticate'))->disableOriginalConstructor()->getMock();
+        $authenticationAdapterMock = $this->getMockBuilder('Zend\Authentication\Adapter\ValidatableAdapterInterface', array('authenticate'))->disableOriginalConstructor()->getMock();
         $authenticationAdapterMock->expects($this->once())->method('authenticate')->will($this->returnValue($authenticationResultMock));
 
         $storageMock = $this->getMockBuilder('Zend\Authentication\Storage\StorageInterface', array('isEmpty', 'read', 'write', 'clear'))->disableOriginalConstructor()->getMock();
@@ -81,7 +81,7 @@ class AuthenticationServiceTest extends PHPUnit_Framework_TestCase
         $authenticationResultMock->expects($this->once())->method('getIdentity')->will($this->returnValue($identity));
         $authenticationResultMock->expects($this->once())->method('isValid')->will($this->returnValue(true));
 
-        $authenticationAdapterMock = $this->getMockBuilder('Zend\Authentication\Adapter\AdapterInterface', array('authenticate'))->disableOriginalConstructor()->getMock();
+        $authenticationAdapterMock = $this->getMockBuilder('Zend\Authentication\Adapter\ValidatableAdapterInterface', array('authenticate'))->disableOriginalConstructor()->getMock();
         $authenticationAdapterMock->expects($this->once())->method('authenticate')->will($this->returnValue($authenticationResultMock));
 
         $storageMock = $this->getMockBuilder('Zend\Authentication\Storage\StorageInterface', array('isEmpty', 'write', 'clear'))->disableOriginalConstructor()->getMock();

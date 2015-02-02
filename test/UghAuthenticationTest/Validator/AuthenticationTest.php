@@ -11,7 +11,7 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase
 
     public function testOptions()
     {
-        $authenticationServiceMock = $this->getMock('Zend\Authentication\AuthenticationServiceInterface');
+        $authenticationServiceMock = $this->getMock('UghAuthentication\Authentication\AuthenticationServiceInterface');
 
         $authenticationValidator = new Authentication(array(
             'service' => $authenticationServiceMock,
@@ -25,7 +25,7 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase
 
     public function testSetters()
     {
-        $authenticationServiceMock = $this->getMock('Zend\Authentication\AuthenticationServiceInterface');
+        $authenticationServiceMock = $this->getMock('UghAuthentication\Authentication\AuthenticationServiceInterface');
 
         $authenticationValidator = new Authentication();
 
@@ -58,7 +58,7 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase
 
     public function testEqualsMessageTemplates()
     {
-        $authenticationServiceMock = $this->getMock('Zend\Authentication\AuthenticationServiceInterface');
+        $authenticationServiceMock = $this->getMock('UghAuthentication\Authentication\AuthenticationServiceInterface');
 
         $authenticationValidator = new Authentication();
 
@@ -73,7 +73,7 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase
     {
         $authenticationResult = new Result(Result::SUCCESS, 'username');
 
-        $authenticationServiceMock = $this->getMock('Zend\Authentication\AuthenticationServiceInterface');
+        $authenticationServiceMock = $this->getMock('UghAuthentication\Authentication\AuthenticationServiceInterface');
         $authenticationServiceMock->expects($this->once())->method('authenticate')->will($this->returnValue($authenticationResult));
 
         $authenticationValidator = new Authentication();
@@ -91,7 +91,7 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase
     {
         $authenticationResult = new Result(Result::SUCCESS, 'username');
 
-        $authenticationServiceMock = $this->getMock('Zend\Authentication\AuthenticationServiceInterface');
+        $authenticationServiceMock = $this->getMock('UghAuthentication\Authentication\AuthenticationServiceInterface');
         $authenticationServiceMock->expects($this->once())->method('authenticate')->will($this->returnValue($authenticationResult));
 
         $authenticationValidator = new Authentication();
@@ -115,7 +115,7 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase
     {
         $authenticationResult = new Result($errorCode, 'testuser');
 
-        $authenticationServiceMock = $this->getMock('Zend\Authentication\AuthenticationServiceInterface');
+        $authenticationServiceMock = $this->getMock('UghAuthentication\Authentication\AuthenticationServiceInterface');
         $authenticationServiceMock->expects($this->once())->method('authenticate')->will($this->returnValue($authenticationResult));
 
         $authenticationValidator = new Authentication();

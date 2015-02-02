@@ -11,7 +11,7 @@ class AuthenticationFactoryTest extends PHPUnit_Framework_TestCase
 
     public function testCanCreateService()
     {
-        $authenicationServiceMock = $this->getMock('Zend\Authentication\AuthenticationServiceInterface');
+        $authenicationServiceMock = $this->getMock('UghAuthentication\Authentication\AuthenticationServiceInterface');
 
         $serviceManager = new ServiceManager();
         $serviceManager->setService('UghAuthentication\Authentication\AuthenticationService', $authenicationServiceMock);

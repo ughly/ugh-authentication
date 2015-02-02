@@ -2,13 +2,15 @@
 
 namespace UghAuthentication\Authentication\Adapter;
 
+use Zend\Authentication\Adapter\AbstractAdapter;
 use Zend\Authentication\Adapter\AdapterInterface;
+use Zend\Authentication\Adapter\ValidatableAdapterInterface;
 use Zend\Authentication\Result;
 
-abstract class Adapter implements AdapterInterface
+abstract class Adapter extends AbstractAdapter
 {
 
-    /** @var AdapterInterface */
+    /** @var ValidatableAdapterInterface */
     private $successor;
 
     /**
@@ -20,6 +22,8 @@ abstract class Adapter implements AdapterInterface
         $result = $this->doAuthentication();
 
         if (!$result->isValid() && !is_null($this->successor)) {
+            $this->successor->setIdentity($this->getIdentity());
+            $this->successor->setCredential($this->getCredential());
             return $this->successor->authenticate();
         }
 
@@ -28,7 +32,7 @@ abstract class Adapter implements AdapterInterface
 
     /**
      * 
-     * @param AdapterInterface $successor
+     * @param ValidatableAdapterInterface $successor
      */
     public function setSuccessor(AdapterInterface $successor)
     {

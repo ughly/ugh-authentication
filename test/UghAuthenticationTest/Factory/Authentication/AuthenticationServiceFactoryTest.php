@@ -14,7 +14,7 @@ class AuthenticationServiceFactoryTest extends PHPUnit_Framework_TestCase
         $factory = new AuthenticationServiceFactory();
 
         $authenticationStorageAdapterMock = $this->getMock('Zend\Authentication\Storage\StorageInterface');
-        $authenticationAdapterMock = $this->getMock('Zend\Authentication\Adapter\AdapterInterface');
+        $authenticationAdapterMock = $this->getMock('Zend\Authentication\Adapter\ValidatableAdapterInterface');
 
         $serviceManager = new ServiceManager();
         $serviceManager->setService('UghAuthentication\Authentication\Storage', $authenticationStorageAdapterMock);
