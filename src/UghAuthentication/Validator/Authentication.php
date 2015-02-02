@@ -2,9 +2,8 @@
 
 namespace UghAuthentication\Validator;
 
-use Zend\Authentication\Adapter\ValidatableAdapterInterface;
-use Zend\Authentication\AuthenticationService;
 use UghAuthentication\Authentication\AuthenticationServiceInterface;
+use Zend\Authentication\AuthenticationService;
 use Zend\Authentication\Exception;
 use Zend\Authentication\Result;
 use Zend\Validator\AbstractValidator;
@@ -38,12 +37,6 @@ class Authentication extends AbstractValidator
     );
 
     /**
-     * Authentication Adapter
-     * @var ValidatableAdapterInterface
-     */
-    protected $adapter;
-
-    /**
      * Identity (or field)
      * @var string
      */
@@ -69,9 +62,6 @@ class Authentication extends AbstractValidator
     public function __construct($options = null)
     {
         if (is_array($options)) {
-            if (array_key_exists('adapter', $options)) {
-                $this->setAdapter($options['adapter']);
-            }
             if (array_key_exists('identity', $options)) {
                 $this->setIdentity($options['identity']);
             }
@@ -83,29 +73,6 @@ class Authentication extends AbstractValidator
             }
         }
         parent::__construct($options);
-    }
-
-    /**
-     * Get Adapter
-     *
-     * @return ValidatableAdapterInterface
-     */
-    public function getAdapter()
-    {
-        return $this->adapter;
-    }
-
-    /**
-     * Set Adapter
-     *
-     * @param  ValidatableAdapterInterface $adapter
-     * @return Authentication
-     */
-    public function setAdapter(ValidatableAdapterInterface $adapter)
-    {
-        $this->adapter = $adapter;
-
-        return $this;
     }
 
     /**
