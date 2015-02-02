@@ -36,6 +36,9 @@ return array(
             'UghAuthentication\Authentication\AuthenticationService' => 'UghAuthentication\Factory\Authentication\AuthenticationService',
             'UghAuthentication\InputFilter\Login' => 'UghAuthentication\Factory\InputFilter\LoginFactory',
             'UghAuthentication\Validator\Authentication' => 'UghAuthentication\Factory\Validator\AuthenticationFactory'
+        ),
+        'invokables' => array(
+            'UghAuthentication\Authentication\Storage' => 'Zend\Authentication\Storage\Session'
         )
     ),
     'form_elements' => array(

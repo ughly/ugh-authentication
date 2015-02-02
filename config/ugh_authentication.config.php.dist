@@ -4,5 +4,8 @@ return array(
     'ugh_authentication' => array(
         'login_route' => 'login',
         'login_redirect_route' => 'admin'
+    ),
+    'service_manager' => array(
+        'UghAuthention\Authentication\Adapter' => 'Replace with your own authentication adapter (If chainable, then this should be the first link in the chain)'
     )
 );
