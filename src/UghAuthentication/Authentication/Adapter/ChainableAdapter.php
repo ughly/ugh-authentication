@@ -7,7 +7,7 @@ use Zend\Authentication\Adapter\AdapterInterface;
 use Zend\Authentication\Adapter\ValidatableAdapterInterface;
 use Zend\Authentication\Result;
 
-abstract class Adapter extends AbstractAdapter
+abstract class ChainableAdapter extends AbstractAdapter
 {
 
     /** @var ValidatableAdapterInterface */
