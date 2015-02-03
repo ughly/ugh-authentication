@@ -40,7 +40,8 @@ return array(
         'factories' => array(
             'UghAuthentication\Authentication\AuthenticationService' => 'UghAuthentication\Factory\Authentication\AuthenticationServiceFactory',
             'UghAuthentication\InputFilter\Login' => 'UghAuthentication\Factory\InputFilter\LoginFactory',
-            'UghAuthentication\Authentication\Validator\Authentication' => 'UghAuthentication\Factory\Authentication\Validator\AuthenticationFactory'
+            'UghAuthentication\Authentication\Validator\Authentication' => 'UghAuthentication\Factory\Authentication\Validator\AuthenticationFactory',
+            'UghAuthentication\Options\ModuleOptions' => 'UghAuthentication\Factory\Options\ModuleOptionsFactory'
         ),
         'invokables' => array(
             'UghAuthentication\Authentication\Storage' => 'Zend\Authentication\Storage\Session'

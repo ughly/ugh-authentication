@@ -14,7 +14,10 @@ class LoginControllerFactory implements FactoryInterface
         $formElementManager = $serviceLocator->getServiceLocator()->get('FormElementManager');
         $loginForm = $formElementManager->get('UghAuthentication\Form\Login');
 
+        $moduleOptions = $serviceLocator->getServiceLocator()->get('UghAuthentication\Options\ModuleOptions');
+
         $controller = new LoginController($loginForm);
+        $controller->setLoginRedirectRoute($moduleOptions->getLoginRedirectRoute());
 
         return $controller;
     }
