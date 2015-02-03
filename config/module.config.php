@@ -47,7 +47,9 @@ return array(
         )
     ),
     'form_elements' => array(
-        'UghAuthentication\Form\Login' => 'UghAuthentication\Factory\Form\LoginFactory'
+        'factories' => array(
+            'UghAuthentication\Form\Login' => 'UghAuthentication\Factory\Form\LoginFactory'
+        )
     ),
     'view_manager' => array(
         'template_map' => array(
