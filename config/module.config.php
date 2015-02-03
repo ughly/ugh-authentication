@@ -35,7 +35,8 @@ return array(
         'factories' => array(
             'UghAuthentication\Authentication\AuthenticationService' => 'UghAuthentication\Factory\Authentication\AuthenticationServiceFactory',
             'UghAuthentication\InputFilter\Login' => 'UghAuthentication\Factory\InputFilter\LoginFactory',
-            'UghAuthentication\Validator\Authentication' => 'UghAuthentication\Factory\Validator\AuthenticationFactory'
+            'UghAuthentication\Validator\Authentication' => 'UghAuthentication\Factory\Validator\AuthenticationFactory',
+            'identity' => 'UghAuthentication\Factory\Mvc\Controller\Plugin\IdentityFactory'
         ),
         'invokables' => array(
             'UghAuthentication\Authentication\Storage' => 'Zend\Authentication\Storage\Session'
