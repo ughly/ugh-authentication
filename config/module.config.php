@@ -31,12 +31,16 @@ return array(
             'UghAuthentication\Controller\Logout' => 'UghAuthentication\Factory\Controller\LogoutControllerFactory'
         )
     ),
+    'controller_plugins' => array(
+        'factories' => array(
+            'identity' => 'UghAuthentication\Factory\Mvc\Controller\Plugin\IdentityFactory'
+        )
+    ),
     'service_manager' => array(
         'factories' => array(
             'UghAuthentication\Authentication\AuthenticationService' => 'UghAuthentication\Factory\Authentication\AuthenticationServiceFactory',
             'UghAuthentication\InputFilter\Login' => 'UghAuthentication\Factory\InputFilter\LoginFactory',
-            'UghAuthentication\Validator\Authentication' => 'UghAuthentication\Factory\Validator\AuthenticationFactory',
-            'identity' => 'UghAuthentication\Factory\Mvc\Controller\Plugin\IdentityFactory'
+            'UghAuthentication\Validator\Authentication' => 'UghAuthentication\Factory\Validator\AuthenticationFactory'
         ),
         'invokables' => array(
             'UghAuthentication\Authentication\Storage' => 'Zend\Authentication\Storage\Session'
