@@ -15,7 +15,10 @@ class LogoutControllerFactory implements FactoryInterface
 
         $authenticationService = $serviceManager->get('UghAuthentication\Authentication\AuthenticationService');
 
+        $moduleOptions = $serviceLocator->getServiceLocator()->get('UghAuthentication\Options\ModuleOptions');
+
         $controller = new LogoutController($authenticationService);
+        $controller->setLoginRoute($moduleOptions->getLoginRoute());
 
         return $controller;
     }
