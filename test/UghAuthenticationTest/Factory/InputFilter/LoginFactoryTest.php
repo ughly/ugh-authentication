@@ -24,7 +24,7 @@ class LoginFactoryTest extends PHPUnit_Framework_TestCase
         $serviceManager = new ServiceManager();
         $serviceManager->setService('UghAuthentication\Authentication\Adapter', $authenticationAdapterMock);
         $serviceManager->setService('UghAuthentication\Authentication\AuthenticationService', $authenticationService);
-        $serviceManager->setService('UghAuthentication\Validator\Authentication', new Authentication());
+        $serviceManager->setService('UghAuthentication\Authentication\Validator\Authentication', new Authentication());
 
         $inputFilterFactory = new LoginFactory();
         $inputFilter = $inputFilterFactory->createService($serviceManager);

@@ -1,8 +1,8 @@
 <?php
 
-namespace UghAuthentication\Factory\Validator;
+namespace UghAuthentication\Factory\Authentication\Validator;
 
-use UghAuthentication\Validator\Authentication;
+use UghAuthentication\Authentication\Validator\Authentication;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 

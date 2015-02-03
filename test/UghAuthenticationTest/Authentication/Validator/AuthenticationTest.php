@@ -1,9 +1,9 @@
 <?php
 
-namespace UghAuthenticationTest\Validator;
+namespace UghAuthenticationTest\Authentication\Validator;
 
 use PHPUnit_Framework_TestCase;
-use UghAuthentication\Validator\Authentication;
+use UghAuthentication\Authentication\Validator\Authentication;
 use Zend\Authentication\Result;
 
 class AuthenticationTest extends PHPUnit_Framework_TestCase

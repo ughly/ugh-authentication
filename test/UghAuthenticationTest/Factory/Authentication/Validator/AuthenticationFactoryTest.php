@@ -1,9 +1,9 @@
 <?php
 
-namespace UghAuthenticationTest\Factory\Validator;
+namespace UghAuthenticationTest\Factory\Authentication\Validator;
 
 use PHPUnit_Framework_TestCase;
-use UghAuthentication\Factory\Validator\AuthenticationFactory;
+use UghAuthentication\Factory\Authentication\Validator\AuthenticationFactory;
 use Zend\ServiceManager\ServiceManager;
 
 class AuthenticationFactoryTest extends PHPUnit_Framework_TestCase

@@ -1,6 +1,6 @@
 <?php
 
-namespace UghAuthentication\Validator;
+namespace UghAuthentication\Authentication\Validator;
 
 use UghAuthentication\Authentication\AuthenticationServiceInterface;
 use Zend\Authentication\AuthenticationService;
@@ -176,8 +176,8 @@ class Authentication extends AbstractValidator
             throw new Exception\RuntimeException('AuthenticationService must be set prior to validation');
         }
 
-        $this->service->setIdentity($this->identity);
-        $this->service->setCredential($this->credential);
+        $this->service->setIdentity($identity);
+        $this->service->setCredential($credential);
 
         $result = $this->service->authenticate();
 
