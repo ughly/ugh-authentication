@@ -1,31 +1,9 @@
 <?php
+
 $loginForm = $this->loginForm;
 $loginForm->prepare();
 $loginForm->setAttribute('action', $this->url('login'));
 $loginForm->setAttribute('method', 'POST');
-$loginForm->setAttribute('role', 'form');
-$loginForm->setAttribute('id', 'user-login');
-?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <h1 class="page-header">Login</h1>
-            <?php echo $this->form()->openTag($loginForm); ?>
-            <?php
-            $usernameMessages = $loginForm->get('username')->getMessages();
-            $passwordMessages = $loginForm->get('password')->getMessages();
-            ?>
-            <div class="form-group <?php echo (!empty($usernameMessages)) ? 'has-error' : ''; ?>">
-                <?php echo $this->formLabel($loginForm->get('username')); ?>
-                <?php echo $this->formElement($loginForm->get('username')); ?>
-            </div>
-            <div class="form-group <?php echo (!empty($passwordMessages)) ? 'has-error' : ''; ?>">
-                <?php echo $this->formLabel($loginForm->get('password')); ?>
-                <?php echo $this->formElement($loginForm->get('password')); ?>
-            </div>
-            <?php echo $this->formHidden($loginForm->get('security')); ?>
-            <?php echo $this->formElement($loginForm->get('submit')); ?>
-            <?php echo $this->form()->closeTag(); ?>
-        </div>
-    </div>
-</div>
+echo $this->form()->openTag($loginForm);
+echo $this->formCollection($loginForm);
+echo $this->form()->closeTag();
