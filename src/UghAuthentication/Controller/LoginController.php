@@ -36,6 +36,7 @@ class LoginController extends AbstractActionController
         }
 
         if ($this->getRequest()->isPost()) {
+            $this->loginForm->setData($this->getRequest()->getPost());
             if ($this->loginForm->isValid()) {
                 return $this->redirect()->toRoute($this->loginRedirectRoute);
             }
