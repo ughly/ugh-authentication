@@ -86,11 +86,6 @@ class AuthenticationService implements AuthenticationServiceInterface, EventMana
         return !$this->storage->isEmpty();
     }
 
-    public function getCredential()
-    {
-        return $this->credential;
-    }
-
     public function setCredential($credential)
     {
         $this->credential = $credential;

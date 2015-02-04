@@ -34,6 +34,8 @@ class AuthenticationServiceTest extends PHPUnit_Framework_TestCase
         });
 
         $authenticationService = new AuthenticationService($storageMock, $authenticationAdapterMock);
+        $authenticationService->setIdentity('testuser');
+        $authenticationService->setCredential('password');
         $authenticationService->setEventManager($eventManager);
 
         $authenticationService->authenticate();
